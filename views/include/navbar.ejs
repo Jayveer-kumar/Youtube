@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav class="nav-items-container">
+        <div class="sidebar_logocontainer"> 
+            <div class="sidebar-container-icon">
+                <i class="fa-solid fa-bars" id="sidebar_icon"></i>
+            </div>
+            <div class="logo-container">
+                <a href="http://localhost:8080/youtube">
+                <i class="fa-brands fa-youtube" ></i>
+                <span id="YoutubeText" >Youtube</span> 
+               </a>
+            </div>
+        </div>  
+        <div class="search_container_box-center-style"> 
+            <div class="search_box-component">
+                <form action="http://localhost:8080/youtube/search?search_query" autocomplete="off" method="get">
+                <div class="search-box-component-input ">
+                    <i class="fa-solid fa-magnifying-glass" id="search-input-icon-center"></i>
+                    <input id="search-input-tag" name="search_query" type="text" placeholder="Search">
+                </div>
+                <button class="search_box_componentButton" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button> 
+            </form>
+            </div>
+            <div class="speech-touch-feedback-box">
+                <i class="fa-solid fa-microphone"></i>
+                <p class="search-with-your-voice">search with your voice</p>
+            </div>
+        </div>
+        <div class="end-style_user-side">
+            <div class="create-video-go_live_box">
+                <i class="fa-solid fa-plus"></i>
+                <span>Create</span>
+            </div>
+            <div class="notification-box">
+                <i class="fa-regular fa-bell"></i>
+            </div>
+            <div class="user-profile-container">
+                <img src="https://images.odishatv.in/uploadimage/library/16_9/16_9_2/IMAGE_1676828160.jpg">
+            </div>
+        </div>      
+    </nav> 
+</body>
+</html>

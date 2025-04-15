@@ -1,0 +1,45 @@
+:root{
+    --Base_color:#f1f1f1;
+    --_base_background_color:#000000;
+}
+.side_box{
+    position: sticky;
+    height: 370px;
+    width: 65px;
+    top:60px; 
+    z-index: 10; 
+}
+#default-sidebar-box{
+    margin-left: 6px;
+    background-color: var(--_base_background_color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+}
+#default-sidebar-box div{
+    width: 65px;
+    height: 75px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;   
+    transition: all 0.01s ease; 
+    >i,svg{
+        color:var(--Base_color);        
+        font-size: 18px;
+        fill: #f1f1f1;
+    }
+}
+#default-sidebar-box div:hover{
+    background-color: #f1f1f12d;
+}
+#default-sidebar-box div span{
+    color:var(--Base_color);
+    font-size: 10px;
+    padding-top:6px;
+}
