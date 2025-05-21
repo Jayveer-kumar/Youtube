@@ -1,149 +1,118 @@
 <% layout('/layouts/boilerplate.ejs') -%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-   <div class="watch-route_main_box">
-       <div class="watch-route_video_box">
-           <div class="watch-video_main_container">
-              <div class="watch_video_with_frametag">
-                 <iframe 
-                   id="video_frame"
-                   data-video-id="<%= videoId %>"
-                   frameborder="0"
-                    allow="autoplay; encrypted-media"
-                  allowfullscreen>
-                  </iframe>
+    <!DOCTYPE html>
+    <html lang="en">
 
-                  <div class="watch_play_pouse_progress-box">
-                    <div class="watch_video_progress"></div>
-                    <div class="watch_video_play_pouse_cap">
-                        <div class="watch_play_pouse_mute_box">
-                            <div class="watchBack"><i class="fa-solid fa-backward-step"></i></div> <!-- Backword Icon-->  
-                            <div class="watchPlay"><i class="fa-solid fa-play"></i></div> <!--  Play  Icon-->  
-                            <div class="watchNext"><i class="fa-solid fa-forward-step"></i></div> <!-- Forword Icon-->  
-                            <div class="watchMute"><i class="fa-solid fa-volume-high"></i></div> <!-- Volume Icon-->  
-                            <div class="watchTime_remaintime"><span>2:30/4:15</span></div> <!-- Current time , Remaining Time Icon-->  
-                        </div>
-                        <div class="watch_autoPlay_setting_fullScreen_box">
-                            <div class="watch_autoPlay">  </div>    <!-- Auto Play Icon-->                    
-                            <div class="watch_caption_box"><i class="fa-regular fa-closed-captioning"></i></div>  <!-- CaptionIcon-->    
-                            <div class="watchSetting_box"><i class="fa-solid fa-gear"></i></div> <!-- Setting Icon-->  
-                            <div class="watch_btn_size"> <img src="/src/icons/rectangle.png" style="width: 1.8em; height: 1.3em;"> </div> <!-- Small Screen Icon-->  
-                            <div class="watch_fullscreen"><i class="fa-solid fa-expand"></i></div>     <!-- Full Screen Icon-->              
+    <head>
+    </head>
+
+    <body>
+        <div class="watch-route_main_box">
+            <div class="watch-route_video_box">
+                <div class="watch-video_main_container">
+                    <div class="watch_video_with_frametag">
+                        <iframe id="video_frame" data-video-id="<%= completeResponse.videoId %>" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen>
+                        </iframe>
+                        <div class="watch_play_pouse_progress-box">
+                            <div class="watch_video_progress"></div>
+                            <div class="watch_video_play_pouse_cap">
+                                <div class="watch_play_pouse_mute_box">
+                                    <div class="watchBack"><i class="fa-solid fa-backward-step"></i></div>
+                                    <!-- Backword Icon-->
+                                    <div class="watchPlay"><i class="fa-solid fa-play"></i></div> <!--  Play  Icon-->
+                                    <div class="watchNext"><i class="fa-solid fa-forward-step"></i></div>
+                                    <!-- Forword Icon-->
+                                    <div class="watchMute"><i class="fa-solid fa-volume-high"></i></div>
+                                    <!-- Volume Icon-->
+                                    <div class="watchTime_remaintime"><span>2:30/4:15</span></div>
+                                    <!-- Current time , Remaining Time Icon-->
+                                </div>
+                                <div class="watch_autoPlay_setting_fullScreen_box">
+                                    <div class="watch_autoPlay"> </div> <!-- Auto Play Icon-->
+                                    <div class="watch_caption_box"><i class="fa-regular fa-closed-captioning"></i></div>
+                                    <!-- CaptionIcon-->
+                                    <div class="watchSetting_box"><i class="fa-solid fa-gear"></i></div>
+                                    <!-- Setting Icon-->
+                                    <div class="watch_btn_size"> <img src="/src/icons/rectangle.png"
+                                            style="width: 1.8em; height: 1.3em;"> </div> <!-- Small Screen Icon-->
+                                    <div class="watch_fullscreen"><i class="fa-solid fa-expand"></i></div>
+                                    <!-- Full Screen Icon-->
+                                </div>
+                            </div>
                         </div>
                     </div>
-                  </div>
-              </div>
-           </div>
-           <div class="watch-video_ch_title-box">
-             <div class="waching-video_title_box">
-                <p id="current_video_titel"> <%=videos.snippet.title %> </p>
-             </div>
-             <div class="watch_video_channel_sh_sb_box">
-                  <div class="watching_video_channel_box">
-                    <div class="watching_video_channel_nm_sb">
-                        <div class="watching_video_channel"> <img src="https://www.thestatesman.com/wp-content/uploads/2024/07/Rakul-Preet-Singh.jpg" alt="channel image"> </div>
-                        <div class="watching_video_channel_name">
-                            <p class="watching_ch_name"><%=videos.snippet.channelTitle %> </p>
-                            <p class="watching_ch_total_subs">2.88M subscribers</p>
+                </div>
+                <div class="watch-video_ch_title-box">
+                    <div class="waching-video_title_box">
+                        <p id="current_video_titel">
+                            <%=completeResponse.videos.snippet.title %>
+                        </p>
+                    </div>
+                    <div class="watch_video_channel_sh_sb_box">
+                        <div class="watching_video_channel_box">
+                            <div class="watching_video_channel_nm_sb">
+                                <div class="watching_video_channel"> <img
+                                        src="<%=completeResponse.channelImage%>"
+                                        alt="channel image"> </div>
+                                <div class="watching_video_channel_name">
+                                    <p class="watching_ch_name">
+                                        <%=completeResponse.videos.snippet.channelTitle %>
+                                    </p>
+                                    <p class="watching_ch_total_subs"><%=completeResponse.subscriberCount%></p>
+                                </div>
+                            </div>
+                            <div class="watching_video_channel_sb_box">
+                                <button class="watching_vd_ch_subs_btn">Subscribe</button>
+                            </div>
                         </div>
-                    </div>                    
-                    <div class="watching_video_channel_sb_box">
-                        <button class="watching_vd_ch_subs_btn">Subscribe</button>
+                        <div class="watching_video_li_down_sh_box">
+                            <div class="watching_video_like_dislike_box"> <button id="watching_video_like"><i
+                                        class="fa-solid fa-thumbs-up"></i>2.3M</button> <button
+                                    id="watching_video_dislike"><i class="fa-solid fa-thumbs-down"></i></button> </div>
+                            <div class="watching_video_share_box"> <button class="watching_video_share"><i
+                                        class="fa-solid fa-share"></i> Share</button> </div>
+                            <div class="watching_video_download_box"> <button class="watching_video_download"><i
+                                        class="fa-solid fa-download"></i>Download</button> </div>
+                            <div class="watching_video_Save_report_box"> <button id="watching_video_report_save"><i
+                                        class="fa-solid fa-ellipsis"></i></button> </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="watching_video_li_down_sh_box">
-                    <div class="watching_video_like_dislike_box"> <button id="watching_video_like"><i class="fa-solid fa-thumbs-up"></i>2.3M</button> <button id="watching_video_dislike"><i class="fa-solid fa-thumbs-down"></i></button>  </div>
-                    <div class="watching_video_share_box"> <button class="watching_video_share"><i class="fa-solid fa-share"></i> Share</button> </div>
-                    <div class="watching_video_download_box"> <button class="watching_video_download"><i class="fa-solid fa-download"></i>Download</button> </div>
-                    <div class="watching_video_Save_report_box"> <button id="watching_video_report_save"><i class="fa-solid fa-ellipsis"></i></button> </div>
-                  </div>
-             </div>
-           </div>
-           
-           <div class="watch-video_comments_main_box">
-                <div class="card">
-                    <div class="person">
-                        <div class="men"> <img src="https://content.tupaki.com/en/feeds/2024/06/21/426339-shrutihaasan.webp" alt="shruti hasan"> </div>
-                        <h5>my name is fabion</h5>
+                </div>
+
+                <div class="watch-video_comments_main_box">
+                    <div class="card">
+                        <div class="person">
+                            <div class="men"> <img
+                                    src="https://content.tupaki.com/en/feeds/2024/06/21/426339-shrutihaasan.webp"
+                                    alt="shruti hasan"> </div>
+                            <h5>my name is fabion</h5>
+                        </div>
+                        <p>this is amazing Song i love it </p>
                     </div>
-                    <p>this is amazing Song i love it </p>
-                </div>                             
-           </div>
-       </div>
-       <div class="watch-route_related_video_box">
-        <div class="watch-route-main-video-card">
-            <div class="watch-router-video-image">
-                <img src="https://www.koimoi.com/wp-content/new-galleries/2024/11/prabhas.jpg" alt="video image">
-            </div>
-            <div class="watch-route-video-description"> 
-                <p class="watch-route-video-title"> Tadap : Tere Siva Jag mein -Full video </p>
-                <p class="watch-route-video-channel-name"></p>
-                <div class="watch-route-video-views-updation-box">
-                   <p class="watch-route-video-views-para"></p>
-                   <p class="watch-route-video-updation-para"></p>
                 </div>
             </div>
-            <div class="watch-route-video-more-option-box"><i class="fa-solid fa-ellipsis-vertical"></i></div>
-        </div>
-        <!-- Main Card End Here -->
-        <div class="watch-route-main-video-card">
-            <div class="watch-router-video-image">
-                <img src="https://images.mid-day.com/images/images/2024/oct/prabhas-luxury-otjes_d.jpg" alt="video image">
-            </div>
-            <div class="watch-route-video-description"> 
-                <p class="watch-route-video-title"></p>
-                <p class="watch-route-video-channel-name"></p>
-                <div class="watch-route-video-views-updation-box">
- 
+            <div class="watch-route_related_video_box">
+                <div class="watch-route-main-video-card">
+                    <div class="watch-router-video-image">
+                        <img src="https://www.koimoi.com/wp-content/new-galleries/2024/11/prabhas.jpg"
+                            alt="video image">
+                    </div>
+                    <div class="watch-route-video-description">
+                        <p class="watch-route-video-title">Tadap: Tere Siva Jag Mein - Full Video and some randome test for testing </p>
+                        <p class="watch-route-video-channel-name">Some Random Channel</p>
+                        <div class="watch-route-video-views-updation-box">
+                            <p>1.2M views</p>
+                            <p>• 3 weeks ago</p>
+                        </div>
+                    </div>
+                    <div class="watch-route-video-more-option-box">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
                 </div>
             </div>
-            <div class="watch-route-video-more-option-box"><i class="fa-solid fa-ellipsis-vertical"></i></div>
         </div>
-        <div class="watch-route-main-video-card">
-            <div class="watch-router-video-image">
-                <img src="https://static.tnn.in/thumb/msid-114358442,thumbsize-71358,width-1280,height-720,resizemode-75/114358442.jpg" alt="video image">
-            </div>
-            <div class="watch-route-video-description"> 
 
-            </div>
-            <div class="watch-route-video-more-option-box"><i class="fa-solid fa-ellipsis-vertical"></i></div>
-        </div>
-        <div class="watch-route-main-video-card">
-            <div class="watch-router-video-image">
-                <img src="https://images.indianexpress.com/2017/08/prabhas-7591.jpg?w=414" alt="video image">
-            </div>
-            <div class="watch-route-video-description"> 
-
-            </div>
-            <div class="watch-route-video-more-option-box"><i class="fa-solid fa-ellipsis-vertical"></i></div>
-        </div>
-        <div class="watch-route-main-video-card">
-            <div class="watch-router-video-image">
-                <img src="https://www.koimoi.com/wp-content/new-galleries/2024/11/prabhas.jpg" alt="video image">
-            </div>
-            <div class="watch-route-video-description"> 
-
-            </div>
-            <div class="watch-route-video-more-option-box"><i class="fa-solid fa-ellipsis-vertical"></i></div>
-        </div>
-        <div class="watch-route-main-video-card">
-            <div class="watch-router-video-image">
-                <img src="https://www.koimoi.com/wp-content/new-galleries/2024/11/prabhas.jpg" alt="video image">
-            </div>
-            <div class="watch-route-video-description"> 
-              <p>Hello i am Description</p>
-              <p>Hello i am channel Image</p>
-            </div>
-            <div class="watch-route-video-more-option-box"><i class="fa-solid fa-ellipsis-vertical"></i></div>
-        </div>
-        <!-- Sample Card End Here -->
-       </div>
-   </div>
-
-   <!-- <script>
+        <!-- <script>
     var player;
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('video_frame', {
@@ -165,6 +134,7 @@
         player.pauseVideo(); // Custom Pause Button
     }
 </script> -->
-<!-- <script src="https://www.youtube.com/iframe_api"></script> -->
-</body>
-</html>
+        <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+    </body>
+
+    </html>

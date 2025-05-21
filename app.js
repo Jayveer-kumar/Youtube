@@ -125,7 +125,21 @@ app.get("/youtube/watch/:id",async(req,res)=>{
     let url=`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${apiKey}`;
     let response=await fetch(url);
     let data=await response.json();
-    res.render("video/play.ejs",{videoId:data.items[0].id,videos:data.items[0]}); 
+    let channelId = data.items[0].snippet.channelId;
+    let channelURL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${apiKey}`;
+    let channelResponse = await axios.get(channelURL);
+    if(!channelResponse){
+        console.log("Complete not found : ");
+        res.send("Something went Wrong :");
+    } 
+    let channelImage = channelResponse.data.items[0].snippet.thumbnails.high?channelResponse.data.items[0].snippet.thumbnails.high.url:channelResponse.data.items[0].snippet.thumbnails.default.url;
+    let completeResponse={
+        videoId:data.items[0].id,
+        videos:data.items[0],
+        channelImage,
+        subscriberCount:channelResponse.data.items[0].statistics.subscriberCount
+    }
+    res.render("video/play.ejs",{completeResponse}); 
    }catch(error){
     console.error(error);
    }

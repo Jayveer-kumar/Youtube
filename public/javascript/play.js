@@ -68,4 +68,29 @@ document.addEventListener("DOMContentLoaded", () => {
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    let totalSubscribersPara =document.querySelector(".watching_ch_total_subs");
+    if(totalSubscribersPara){
+        totalSubscribersPara.textContent=setSubscribers(totalSubscribersPara.textContent);
+    }
+    
 });
+
+// function to convert number to subscriber format  like 1000 = 1k  , 20000 = 20k
+
+function setSubscribers(subscribers){
+    if(subscribers<1000){
+        return subscribers;
+    }
+    const abThousand=(subscribers/1000).toFixed(1);
+    const abTenLakhs=(subscribers/1000000).toFixed(1);
+    const abBillion= (subscribers / 1000000000).toFixed(1); 
+
+    if(subscribers>1000000000){
+        return `${abBillion}B subscribers`;
+    }else if(subscribers>1000000){
+        return `${abTenLakhs}M subscribers`;
+    }else{
+        return `${abThousand}K subscribers`;
+    }
+}
