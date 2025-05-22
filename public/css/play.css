@@ -1,46 +1,53 @@
-body{
+body {
     /* height: auto; */
     overflow: scroll !important;
     overflow-x: hidden;
 }
-.watch-route_main_box{
-    margin-top:10px;
+
+.watch-route_main_box {
+    margin-top: 10px;
     min-height: 200vh;
     width: 100%;
     display: grid;
     grid-template-columns: 65% 1fr;
     overflow-y: auto;
-} 
-.watch-route_video_box{
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,1fr);
-    padding:1em;
 }
-.watch-route_video_box 
-.watch-video_main_container {
+
+.watch-route_video_box {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    padding: 1em;
+}
+
+.watch-route_video_box .watch-video_main_container {
     max-height: 65vh;
-    min-width: 75%;
-    aspect-ratio: 16/9;
-    width: 100%;
-    padding:0 40px;
+    /* min-height: auto; */
+    max-width: 100%;
+    /* min-width: auto; */
+    /* min-width: 75%; */
+    aspect-ratio: 16/9;    
+    padding: 0 10px;
     margin-left: 1.3rem;
 }
-.watch_video_with_frametag{
+
+.watch_video_with_frametag {
     height: 100%;
     width: 100%;
     position: relative;
     z-index: 1;
 }
-#video_frame{
+
+#video_frame {
     height: 100%;
     width: 100%;
-    border:none;
+    border: none;
     border-radius: 15px;
     cursor: pointer;
     position: relative;
 }
-.watch_play_pouse_progress-box{
+
+.watch_play_pouse_progress-box {
     position: absolute;
     height: 10%;
     width: 100%;
@@ -54,13 +61,15 @@ body{
     transition: all 0.8s ease;
     opacity: 0;
 }
-.watch_video_progress{
+
+.watch_video_progress {
     height: 8%;
     width: 97%;
     background-color: red;
     cursor: pointer;
 }
-.watch_video_play_pouse_cap{
+
+.watch_video_play_pouse_cap {
     height: 92%;
     width: 100%;
     background-color: transparent;
@@ -68,121 +77,131 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-.watch_video_play_pouse_cap div{
-    padding:0 5px;
+
+.watch_video_play_pouse_cap div {
+    padding: 0 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
 }
 
-.watch_video_play_pouse_cap div div i,img,span{
-    color:rgba(255, 255, 255, 0.636);    
+.watch_video_play_pouse_cap div div i,
+img,
+span {
+    color: rgba(255, 255, 255, 0.636);
     font-size: 1.3em;
     cursor: pointer;
 }
 
-.watch_video_play_pouse_cap div div img{
+.watch_video_play_pouse_cap div div img {
     /*  This for only rectangle img */
     filter: invert(1);
 }
-.watch_play_pouse_mute_box{
+
+.watch_play_pouse_mute_box {
     width: 30%;
 }
-.watch_autoPlay_setting_fullScreen_box{
+
+.watch_autoPlay_setting_fullScreen_box {
     width: 30%;
 }
-.watch_video_with_frametag:hover{
-    .watch_play_pouse_progress-box{
+
+.watch_video_with_frametag:hover {
+    .watch_play_pouse_progress-box {
         opacity: 1;
-    }  
+    }
 }
 
 /* Playing video style complete Here */
-.watch-route_video_box .watch-video_ch_title-box{
-    max-width: 100%;
+.watch-route_video_box .watch-video_ch_title-box {
     width: 100%;
-    padding:0.8em 2.5em;
+    padding: 0.8em 2.5em;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     font-size: clamp(18px, 2vw, 25px);
     min-height: 3rem;
 }
-.waching-video_title_box{
-    >p{
+.waching-video_title_box {
+    >p {
         font-weight: 600;
         font-size: 0.8em;
     }
-} 
-.watch_video_channel_sh_sb_box{
-    padding:0;
+}
+.watch_video_channel_sh_sb_box {
+    padding: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.watching_video_channel_box{
+
+.watching_video_channel_box {
     display: flex;
     justify-content: space-between;
     width: 40%;
     font-size: clamp(18px, 2vw, 25px);
 }
-.watching_video_channel_nm_sb{
+
+.watching_video_channel_nm_sb {
     display: flex;
 }
-.watching_video_channel{
+
+.watching_video_channel {
     width: 3rem !important;
     height: 3rem !important;
     border-radius: 50%;
     overflow: hidden;
+
     /* margin-right:0.3em; */
-    >img{
+    >img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
 }
-.watching_video_channel_name{
+
+.watching_video_channel_name {
     min-width: 8.8rem;
     height: 2.8rem;
-    font-size:  clamp(15px, 2vw, 25px);
-    padding-left:8px;
-    padding-top:4px;
+    font-size: clamp(15px, 2vw, 25px);
+    padding-left: 8px;
+    padding-top: 4px;
     flex-shrink: 0;
 }
-.watching_ch_name{
+.watching_ch_name {
     font-weight: 600;
     font-size: 0.6em;
     flex-shrink: 0;
 }
-.watching_ch_total_subs{
+.watching_ch_total_subs {
     font-weight: 600;
     font-size: 0.4em;
 }
-.watching_video_channel_sb_box{
-    margin-left:5px;
+.watching_video_channel_sb_box {
+    margin-left: 5px;
     height: 2.4rem;
-    font-size:  clamp(16px, 2vw, 25px);
-    >button{
+    font-size: clamp(16px, 2vw, 25px);
+    >button {
         height: 100%;
         width: 100%;
         border-radius: 35px;
-        border:none;
-        background-color: rgb(240, 233, 233);
+        border: none;
+        background-color: #f0e9e9;
         font-weight: 600;
-        color:rgb(7, 7, 7);
+        color: rgb(7, 7, 7);
         cursor: pointer;
         padding: 0 15px;
     }
 }
-.watching_video_li_down_sh_box{
+.watching_video_li_down_sh_box {
     height: 4.5rem;
     width: 45%;
     display: flex;
     justify-content: space-around;
-    align-items: center;    
-    >div{
+    align-items: center;
+    >div {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -190,95 +209,168 @@ body{
         margin-bottom: 8px;
     }
 }
-.watching_video_li_down_sh_box div button{
+
+.watching_video_li_down_sh_box div button {
     height: 2.3rem;
-    padding:0 10px;
+    padding: 0 10px;
     cursor: pointer;
     background-color: rgba(154, 154, 154, 0.264);
-    color:white;
+    color: white;
     font-size: 0.5em;
-    border:none;   
-    i{
-        color:rgba(255, 255, 255, 0.788);
-        padding-right:6px;
+    border: none;
+    i {
+        color: rgba(255, 255, 255, 0.788);
+        padding-right: 6px;
         font-size: 1.2em;
     }
 }
-.watching_video_li_down_sh_box div 
-.watching_video_share ,
-.watching_video_download{
+
+.watching_video_li_down_sh_box div .watching_video_share,
+.watching_video_download {
     border-radius: 17px;
 }
-.watching_video_like_dislike_box{
-    padding:0 5px;
+
+.watching_video_like_dislike_box {
+    padding: 0 5px;
     background-color: rgba(154, 154, 154, 0.264);
 }
-#watching_video_like{
+
+#watching_video_like {
     border-right: 1px solid white;
 }
-#watching_video_like,#watching_video_dislike{
+
+#watching_video_like,
+#watching_video_dislike {
     border-top-left-radius: 17px;
     border-bottom-left-radius: 17px;
     background-color: transparent;
 }
-#watching_video_report_save{
+
+#watching_video_report_save {
     height: 2.3rem;
     width: 2.3rem;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border:none;
-    i{
-        padding-right:0;
+    border: none;
+
+    i {
+        padding-right: 0;
     }
 }
 
-.watch-route_video_box .watch-video_comments_main_box{
-    margin-top:100px;
+/* Comment Stylling Start Here */
+ .watch-video_comments_main_box {
     height: auto;
     width: 100%;
-    border:5px solid rgb(242, 0, 255);
+    background-color: #000000eb;
+    border-radius: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }
-.card{
-    padding:6px 9px;
-    box-shadow: 0 5px 30px rgb(117, 110, 110);
-    border-radius: 10px;
-    margin:10px;
-    >p{
-        padding-left: 10px;
-        font-weight: 600;
-    }
+.watch-video_comments_main_box hr{
+    width:100%;
 }
-.card .person{
-    padding:10px;
+.sngl-comment-main-box {
+    height: 5em;
+    width: 100%;
+    background-color: transparent;
+    padding: 0.4em;
+    border-radius: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    >.men{
-        height: 30px;
-        width: 30px;
-        background-color: cadetblue;
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgb(227, 15, 15);
-        >img{
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-    }
 }
-.watch-route_related_video_box{
+.commenter-user-image {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-right: 0.4em;
+}
+.image {
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.commenter-user-ds-bio {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.5em;
+    margin: 0;
+}
+.commenter-user-nm-cmt {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.1em;
+    margin: 0;
+    padding: 0;
+}
+.commenter-user-name-delay-box {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.2em;
+}
+.commenter-user-name {
+    color: #e6e6e6;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 0.8em;
+    letter-spacing: 0.03em;
+}
+.commenter-user-cmt-time {
+    color: #e6e6e691;
+    flex-shrink: 0;
+    font-size: 0.7em;
+}
+.commenter-user-comment {
+    color: white;
+    margin: 0;
+    padding: 0.3em 0;
+}
+.commenter-cmt-like-dislike-box {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    color: #eae7e7;
+}
+.commenter-cmt-like-dislike-box i{
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.commenter-user-more-option {
+    color: white;
+    cursor: pointer;
+    padding: 0.3em;
+}
+
+/* Comment Stylling End Here */
+.watch-route_related_video_box {
     min-height: 100vh;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap:2em;
+    gap: 2em;
     background-color: transparent;
 }
+
 .watch-route-main-video-card {
     display: flex;
     gap: 0.7em;
@@ -309,8 +401,9 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap:0.7em;
-    padding-right: 2em; /* for space before 3-dot icon */
+    gap: 0.7em;
+    padding-right: 2em;
+    /* for space before 3-dot icon */
 }
 
 .watch-route-video-title {
@@ -341,57 +434,76 @@ body{
     color: #ccc;
 }
 
-@media (min-width:1300px){
-    .watch-route_video_box .watch-video_comments_main_box{
+@media (min-width:1300px) {
+    .watch-route_video_box .watch-video_comments_main_box {
         margin-top: 500px;
     }
 }
-@media (max-width : 1020px){
-    .watch-route_main_box{
+
+@media (max-width : 1020px) {
+    .watch-route_main_box {
         display: grid;
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
-    .watch-route_video_box{
+
+    .watch-route_video_box {
         display: flex;
         flex-direction: column;
         height: auto;
     }
-    .watching_video_li_down_sh_box div button{
+
+    .watching_video_li_down_sh_box div button {
         font-size: 0.6em;
     }
 }
-@media (max-width:766px){
-    .watch_video_play_pouse_cap div div i,span{    
+
+@media (max-width:766px) {
+
+    .watch_video_play_pouse_cap div div i,
+    span {
         font-size: 0.5em;
     }
-    .watching_video_download{
+
+    .watching_video_download {
         display: none;
     }
 }
-@media (max-width:590px){
-    .watch_video_play_pouse_cap{
+
+@media (max-width:590px) {
+    .watch_video_play_pouse_cap {
         display: flex;
         justify-content: space-around;
-        align-items:center;
+        align-items: center;
     }
-    .watch_video_play_pouse_cap div div i,img,span{    
+
+    .watch_video_play_pouse_cap div div i,
+    img,
+    span {
         font-size: 0.8em;
     }
-    
+
 }
-@media (max-width:450px){
-    .watch_video_play_pouse_cap div div i,img,span{    
+
+@media (max-width:450px) {
+
+    .watch_video_play_pouse_cap div div i,
+    img,
+    span {
         font-size: 0.6em;
     }
 }
+
 @media (max-width:400px) {
-    .watch_video_play_pouse_cap{
+    .watch_video_play_pouse_cap {
         display: flex;
-        justify-content:center;
-        align-items:center;
+        justify-content: center;
+        align-items: center;
     }
-    .watch_video_play_pouse_cap div div i,img,span{    
+
+    .watch_video_play_pouse_cap div div i,
+    img,
+    span {
         font-size: 0.4em;
-        margin:0 3px;
+        margin: 0 3px;
     }
 }

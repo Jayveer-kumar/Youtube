@@ -45,7 +45,8 @@ app.get("/youtube", async (req, res) => {
         // Create a mapping of channelId to channel image URL
         const channelImage = {};
         channelResponse.data.items.forEach((element) => {
-            channelImage[element.id] = element.snippet.thumbnails.high.url;
+            const thumbs = element.snippet.thumbnails;
+            channelImage[element.id] = thumbs.high?.url ||thumbs.medium?.url ||thumbs.default?.url;
         });
 
         // Add channel image to each video
@@ -126,19 +127,24 @@ app.get("/youtube/watch/:id",async(req,res)=>{
     let response=await fetch(url);
     let data=await response.json();
     let channelId = data.items[0].snippet.channelId;
+    // ye Request current playing video ka name  , subscribers or image ke liye hai
     let channelURL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${apiKey}`;
     let channelResponse = await axios.get(channelURL);
     if(!channelResponse){
         console.log("Complete not found : ");
         res.send("Something went Wrong :");
     } 
+    // Ye request current playing video ke comments ke liye hai 
+    let commentURL=`https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${data.items[0].id}&maxResults=20&key=${apiKey}`;
+    let commentResponse= await axios.get(commentURL);
     let channelImage = channelResponse.data.items[0].snippet.thumbnails.high?channelResponse.data.items[0].snippet.thumbnails.high.url:channelResponse.data.items[0].snippet.thumbnails.default.url;
     let completeResponse={
         videoId:data.items[0].id,
         videos:data.items[0],
         channelImage,
-        subscriberCount:channelResponse.data.items[0].statistics.subscriberCount
-    }
+        subscriberCount:channelResponse.data.items[0].statistics.subscriberCount,
+        commentResponse
+    }    
     res.render("video/play.ejs",{completeResponse}); 
    }catch(error){
     console.error(error);
