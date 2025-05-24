@@ -70,27 +70,72 @@ document.addEventListener("DOMContentLoaded", () => {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     let totalSubscribersPara =document.querySelector(".watching_ch_total_subs");
-    if(totalSubscribersPara){
-        totalSubscribersPara.textContent=setSubscribers(totalSubscribersPara.textContent);
+    let totalLikePara=document.querySelector("#watching_video_like");
+    if(totalSubscribersPara || totalLikePara){
+        totalSubscribersPara.textContent = formatNumber(totalSubscribersPara.textContent, "subscribers");
+        totalLikePara.textContent = formatNumber(totalLikePara.textContent);
     }
+
+    // Comment Sorting 
+
+    const sortBtn = document.querySelector(".watch-video_comment_sort_btn");
+    const sortSelect = document.querySelector(".watch-video_comment_sort_select");
+
+    // Toggle select visibility on button click
+    sortBtn.addEventListener("click", () => {
+        sortSelect.style.display = sortSelect.style.display === "none" ? "inline-block" : "none";
+    });
+    sortSelect.addEventListener("change", (e) => {
+        console.log("Selected sort:", e.target.value);
+    });
+    sortSelect.style.display = "none";
     
+    // Format comment timestamps
+    let commentTimestamps =document.querySelectorAll(".commenter-user-cmt-time");
+    commentTimestamps.forEach((timeStamps)=>{
+        timeStamps.textContent = publishAtFormate(timeStamps.textContent);
+    })
 });
 
 // function to convert number to subscriber format  like 1000 = 1k  , 20000 = 20k
 
-function setSubscribers(subscribers){
-    if(subscribers<1000){
-        return subscribers;
-    }
-    const abThousand=(subscribers/1000).toFixed(1);
-    const abTenLakhs=(subscribers/1000000).toFixed(1);
-    const abBillion= (subscribers / 1000000000).toFixed(1); 
+function formatNumber(value, label = "") {
+    value = Number(value);  // Ensure it's a number
 
-    if(subscribers>1000000000){
-        return `${abBillion}B subscribers`;
-    }else if(subscribers>1000000){
-        return `${abTenLakhs}M subscribers`;
-    }else{
-        return `${abThousand}K subscribers`;
+    if (value < 1000) {
+        return label ? `${value} ${label}` : `${value}`;
     }
+
+    const thousand = (value / 1000).toFixed(1);
+    const million = (value / 1000000).toFixed(1);
+    const billion = (value / 1000000000).toFixed(1);
+
+    if (value >= 1000000000) {
+        return label ? `${billion}B ${label}` : `${billion}B`;
+    } else if (value >= 1000000) {
+        return label ? `${million}M ${label}` : `${million}M`;
+    } else {
+        return label ? `${thousand}K ${label}` : `${thousand}K`;
+    }
+}
+
+function publishAtFormate(publishAt){
+    const publishDate=new Date(publishAt);
+    const currentDate=new Date;
+    const second=Math.floor((currentDate-publishDate)/1000);
+    const minute=Math.floor(second/60);
+    const hours=Math.floor(minute/60);
+    const day=Math.floor(hours/24);
+    const week=Math.floor(day/7);
+    const month=Math.floor(day/30);
+    const year=Math.floor(day/365);
+
+    if(year>0) return year===1?"1 year ago":`${year} year ago`;
+    if(month>0) return month===1?"1 month ago":`${month} month ago`;
+    if(week>0) return week===1?"1  Week ago":`${week} week ago`;
+    if(day>0) return day===1?"1 day ago":`${day} day ago`;
+    if(hours>0) return hours===1?"1 hours ago ":`${hours} hours ago`;
+    if(minute>0) return minute===1?"1 minute ago":`${minute} minute ago`;
+    if(second>0) return second===1?"1 Second ago":`${second} second ago`;
+    return "Just Now";
 }
